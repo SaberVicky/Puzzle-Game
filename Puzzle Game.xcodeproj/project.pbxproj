@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3445F0A8D06C763371210DE9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3460A5DF6D909CA63B7AEB33 /* Pods.framework */; };
+		3B6A7F621C9D4FD9007B3257 /* SLPhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A7F611C9D4FD9007B3257 /* SLPhotoBrowserViewController.swift */; };
 		3B75CC291C9CE88800CA4FEA /* SLGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75CC281C9CE88800CA4FEA /* SLGameManager.swift */; };
 		3B75CC2B1C9CF72500CA4FEA /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75CC2A1C9CF72500CA4FEA /* UIImage+Extension.swift */; };
 		3BC372FE1C93FAE900971AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC372FD1C93FAE900971AB1 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		3460A5DF6D909CA63B7AEB33 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6A7F611C9D4FD9007B3257 /* SLPhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLPhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		3B75CC281C9CE88800CA4FEA /* SLGameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLGameManager.swift; sourceTree = "<group>"; };
 		3B75CC2A1C9CF72500CA4FEA /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		3BC372FA1C93FAE900971AB1 /* Puzzle Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Puzzle Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,9 +74,10 @@
 				3BC373151C93FCA200971AB1 /* SLStartViewController.swift */,
 				3BC3731C1C940E2B00971AB1 /* SLMainViewController.swift */,
 				3BC3731E1C94109800971AB1 /* SLSettingViewController.swift */,
+				3B6A7F611C9D4FD9007B3257 /* SLPhotoBrowserViewController.swift */,
 				3B75CC281C9CE88800CA4FEA /* SLGameManager.swift */,
-				3BC372FD1C93FAE900971AB1 /* AppDelegate.swift */,
 				3B75CC2A1C9CF72500CA4FEA /* UIImage+Extension.swift */,
+				3BC372FD1C93FAE900971AB1 /* AppDelegate.swift */,
 				3BC373041C93FAE900971AB1 /* Assets.xcassets */,
 				3BC373061C93FAE900971AB1 /* LaunchScreen.storyboard */,
 				3BC373091C93FAE900971AB1 /* Info.plist */,
@@ -228,6 +231,7 @@
 				3B75CC2B1C9CF72500CA4FEA /* UIImage+Extension.swift in Sources */,
 				3BC3731F1C94109800971AB1 /* SLSettingViewController.swift in Sources */,
 				3BC3731B1C9404C300971AB1 /* Common.swift in Sources */,
+				3B6A7F621C9D4FD9007B3257 /* SLPhotoBrowserViewController.swift in Sources */,
 				3B75CC291C9CE88800CA4FEA /* SLGameManager.swift in Sources */,
 				3BC372FE1C93FAE900971AB1 /* AppDelegate.swift in Sources */,
 			);

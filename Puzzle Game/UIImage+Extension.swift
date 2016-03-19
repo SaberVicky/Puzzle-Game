@@ -9,17 +9,6 @@
 
 import UIKit
 
-//extension UIImageView {
-//
-//    convenience init(imageName: String, currentIndex: Int, totalIndex: Int) {
-//        let image = UIImage(named: imageName)
-//        let imageRef = image?.CGImage
-//        let n = Int(sqrt(CGFloat(totalIndex)))
-//        let clipImage = CGImageCreateWithImageInRect(imageRef, CGRectMake(CGFloat((currentIndex - 1) % n) * image!.size.width, CGFloat((currentIndex - 1) / n) * image!.size.height, image!.size.width / sqrt(CGFloat(totalIndex)), image!.size.height / sqrt(CGFloat(totalIndex))))
-//        self.init(image: UIImage(CGImage: clipImage!))
-//    }
-//}
-
 extension UIImage {
     convenience init(imageName: String, currentIndex: Int, totalIndex: Int) {
         let image = UIImage(named: imageName)

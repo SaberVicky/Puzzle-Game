@@ -20,6 +20,12 @@ class SLSettingViewController: UIViewController {
         setupDefaultDifficult()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        iconView.setBackgroundImage(UIImage(named: SLGameManager.shareManager.gameDifficultImageName), forState: .Normal)
+    }
+    
+    private lazy var iconView = UIButton()
     
 }
 
@@ -50,7 +56,36 @@ extension SLSettingViewController {
             difficultyButton.backgroundColor = UIColor.yellowColor()
             difficultyButton.tag = i + 3
             difficultyButton.addTarget(self, action:"selectDifficult:" , forControlEvents: .TouchUpInside)
-            view .addSubview(difficultyButton)
+            view.addSubview(difficultyButton)
+        }
+        
+        let themeLabel = UILabel()
+        themeLabel.text = "Theme"
+        view.addSubview(themeLabel)
+        themeLabel.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(view.snp_centerX)
+            make.bottom.equalTo(-kScreenHeight / 2)
+        }
+        
+        iconView.addTarget(self, action: "changeTheme", forControlEvents: .TouchUpInside)
+        view.addSubview(iconView)
+        iconView.snp_makeConstraints { (make) -> Void in
+            make.width.height.equalTo(60)
+            make.top.equalTo(themeLabel.snp_bottom).offset(20)
+            make.centerX.equalTo(view.snp_centerX).multipliedBy(0.5)
+        }
+        
+        let changeButton = UIButton()
+        changeButton.setTitle("Change", forState: .Normal)
+        changeButton.backgroundColor = UIColor.yellowColor()
+        changeButton.setTitleColor(UIColor.redColor(), forState: .Normal)
+        changeButton.addTarget(self, action: "changeTheme", forControlEvents: .TouchUpInside)
+        view.addSubview(changeButton)
+        changeButton.snp_makeConstraints { (make) -> Void in
+            make.width.equalTo(80)
+            make.height.equalTo(40)
+            make.centerX.equalTo(themeLabel.snp_centerX)
+            make.centerY.equalTo(iconView.snp_centerY)
         }
         
         let saveButton = UIButton()
@@ -102,5 +137,9 @@ extension SLSettingViewController {
     
     func clickCancel() {
         dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    func changeTheme() {
+        presentViewController(SLPhotoBrowserViewController(), animated: false, completion: nil)
     }
 }

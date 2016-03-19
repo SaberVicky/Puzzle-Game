@@ -11,6 +11,8 @@ import UIKit
 class SLGameManager: NSObject {
     
     var gameDifficulty: Int = 3
+    var gameDifficultImageName = "jiqimao"
+    var gameDifficultImageArray = ["jiqimao", "dog"]
 
     static let shareManager: SLGameManager = {
         

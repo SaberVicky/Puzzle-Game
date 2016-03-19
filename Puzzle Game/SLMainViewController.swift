@@ -54,7 +54,8 @@ extension SLMainViewController {
             
             
             let button = UIButton(frame: CGRectMake(x, y, width, height))
-            button.setImage(UIImage(imageName: "jiqimao", currentIndex: Int(n.intValue), totalIndex: count), forState: .Normal)
+            
+            button.setBackgroundImage(UIImage(imageName: SLGameManager.shareManager.gameDifficultImageName, currentIndex: Int(n.intValue), totalIndex: count), forState: .Normal)
             button.tag = Int(n.intValue)
             button.addTarget(self, action: "clickButton:", forControlEvents: .TouchUpInside)
             gameView.addSubview(button)
