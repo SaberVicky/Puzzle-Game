@@ -12,6 +12,7 @@ import UIKit
 class SLSettingViewController: UIViewController {
 
     private var currentDifficult: Int?
+    private var imageName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +21,12 @@ class SLSettingViewController: UIViewController {
         setupDefaultDifficult()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        iconView.setBackgroundImage(UIImage(named: SLGameManager.shareManager.gameDifficultImageName), forState: .Normal)
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        iconView.setBackgroundImage(UIImage(named: SLGameManager.shareManager.gameImageName), forState: .Normal)
+//    }
     
     private lazy var iconView = UIButton()
-    
 }
 
 extension SLSettingViewController {
@@ -42,7 +42,6 @@ extension SLSettingViewController {
             make.top.equalTo(view.snp_top).offset(50)
             make.height.equalTo(100)
         }
-        
         
         let margin: CGFloat = 30
         let height: CGFloat = 60
@@ -68,6 +67,8 @@ extension SLSettingViewController {
         }
         
         iconView.addTarget(self, action: "changeTheme", forControlEvents: .TouchUpInside)
+        iconView.setBackgroundImage(UIImage(named: SLGameManager.shareManager.gameImageName), forState: .Normal)
+        imageName = SLGameManager.shareManager.gameImageName
         view.addSubview(iconView)
         iconView.snp_makeConstraints { (make) -> Void in
             make.width.height.equalTo(60)
@@ -121,7 +122,7 @@ extension SLSettingViewController {
 }
 
 extension SLSettingViewController {
-    
+
     func selectDifficult(button: UIButton) {
         for i in 3...6 {
             view.viewWithTag(i)?.backgroundColor = UIColor.yellowColor()
@@ -132,6 +133,7 @@ extension SLSettingViewController {
     
     func clickConfirm() {
         SLGameManager.shareManager.gameDifficulty = currentDifficult!
+        SLGameManager.shareManager.gameImageName = imageName!
         dismissViewControllerAnimated(false, completion: nil)
     }
     
@@ -140,6 +142,11 @@ extension SLSettingViewController {
     }
     
     func changeTheme() {
-        presentViewController(SLPhotoBrowserViewController(), animated: false, completion: nil)
+        let vc = SLPhotoBrowserViewController()
+        vc.initBack{(imageName: String) -> Void in
+            self.iconView.setBackgroundImage(UIImage(named: imageName), forState: .Normal)
+            self.imageName = imageName
+        }
+        presentViewController(vc, animated: false, completion: nil)
     }
 }

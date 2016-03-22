@@ -78,10 +78,10 @@
 				3B75CC281C9CE88800CA4FEA /* SLGameManager.swift */,
 				3B75CC2A1C9CF72500CA4FEA /* UIImage+Extension.swift */,
 				3BC372FD1C93FAE900971AB1 /* AppDelegate.swift */,
+				3BC3731A1C9404C300971AB1 /* Common.swift */,
 				3BC373041C93FAE900971AB1 /* Assets.xcassets */,
 				3BC373061C93FAE900971AB1 /* LaunchScreen.storyboard */,
 				3BC373091C93FAE900971AB1 /* Info.plist */,
-				3BC3731A1C9404C300971AB1 /* Common.swift */,
 			);
 			path = "Puzzle Game";
 			sourceTree = "<group>";
