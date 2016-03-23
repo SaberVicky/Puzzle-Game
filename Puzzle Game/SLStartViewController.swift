@@ -77,7 +77,7 @@ extension SLStartViewController {
     }
     
     func clickStart() {
-        let nav = UINavigationController(rootViewController: SLMainViewController())
+        let nav = UINavigationController(rootViewController: SLChapterViewController())
         presentViewController(nav, animated: false, completion: nil)
     }
     

@@ -17,6 +17,8 @@ class SLGameManager: NSObject {
     var gameImageName = "jiqimao"
     //默认图片包
     var gameDefaultImageArray = ["jiqimao", "dog"]
+    //游戏时间
+    var gameDefaultTime = 61
 
     static let shareManager: SLGameManager = {
         let manager = SLGameManager()

@@ -11,16 +11,41 @@ import SVProgressHUD
 
 
 class SLMainViewController: UIViewController, UIAlertViewDelegate {
+    
+    var time = SLGameManager.shareManager.gameDefaultTime
+    
+    func tickDown() {
+        time--
+        timeLabel.text = "\(time)"
+        if time == 0 {
+            timer?.invalidate()
+            timer = nil
+            loseAlert = UIAlertView(title: "Tip", message: "You lost", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Quit")
+            loseAlert.show()
+            gameView.userInteractionEnabled = false
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tickDown", userInfo: nil, repeats: true)
+        timer?.fire()
         setupUI()
         setupImages()
     }
     
     private lazy var gameView = UIView()
-}
+    var timer: NSTimer?
+    private lazy var timeLabel: UILabel = {
+       let label = UILabel()
+        label.text = "60"
+        label.font = UIFont.systemFontOfSize(30)
+        return label
+    }()
+    
+    private lazy var quitAlert = UIAlertView()
+    private lazy var loseAlert = UIAlertView()}
 
 extension SLMainViewController {
     
@@ -28,6 +53,7 @@ extension SLMainViewController {
         view.backgroundColor = UIColor.lightGrayColor()
         title = "Puzzle Game"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Quit", style: .Plain, target: self, action: "clickQuit")
+        
 
         gameView.backgroundColor = UIColor.whiteColor()
         view.addSubview(gameView)
@@ -35,6 +61,12 @@ extension SLMainViewController {
             make.center.equalTo(view.snp_center)
             make.width.equalTo(kScreenWidth)
             make.height.equalTo(kScreenWidth)
+        }
+        
+        view.addSubview(timeLabel)
+        timeLabel.snp_makeConstraints { (make) -> Void in
+            make.bottom.equalTo(gameView.snp_top)
+            make.centerX.equalTo(view.snp_centerX)
         }
     }
     
@@ -83,6 +115,7 @@ extension SLMainViewController {
         }
         return endArray
     }
+    
 }
 
 extension SLMainViewController {
@@ -90,12 +123,28 @@ extension SLMainViewController {
 
     
     func clickQuit() {
-        UIAlertView(title: "Tip", message: "Quit Game?", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Confirm").show()
+        gameView.hidden = true
+        timer?.invalidate()
+        timer = nil
+        quitAlert = UIAlertView(title: "Tip", message: "Quit Game?", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Confirm")
+        quitAlert.show()
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 1 {
-            dismissViewControllerAnimated(true, completion: nil)
+        if alertView == quitAlert {
+            if buttonIndex == 1 {
+                
+                navigationController?.popViewControllerAnimated(true)
+            } else {
+                gameView.hidden = false
+                timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tickDown", userInfo: nil, repeats: true)
+                timer?.fire()
+            }
+            
+        } else if alertView == loseAlert {
+            if buttonIndex == 1 {
+                navigationController?.popViewControllerAnimated(true)
+            }
         }
     }
     
